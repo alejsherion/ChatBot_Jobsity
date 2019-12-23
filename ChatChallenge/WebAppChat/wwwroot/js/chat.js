@@ -46,7 +46,6 @@ document.getElementById("sendButton")
         var message = document.getElementById("messageInput").value;
         connection
             .invoke("SendMessage", user, message)
-            .then(u => requestBot(message))
             .catch(function (err) {
                 return console.error(err.toString());
             });
@@ -54,34 +53,3 @@ document.getElementById("sendButton")
         document.getElementById("messageInput").value = "";
         event.preventDefault();
     });
-
-var requestBot = function (message) {
-    var url = "https://localhost:44371/api/messages";
-    var data = {
-        id: uuidv4(),
-        channelId: "chat-bot",
-        locale: "en-US",
-        text: message,
-        type: "message"
-    };
-
-    fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json'
-        },
-        mode: 'cors'
-    }).then(res => res.json())
-        .then(response => console.log('Success', response))
-        .catch(error => console.error(error));
-
-}
-
-function uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-    });
-}
