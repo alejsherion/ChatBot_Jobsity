@@ -17,12 +17,12 @@ messages.
 ● Unit test the functionality you prefer
 
 # Requirements
-SDK .NetCore 3.1 or Higher
-EntityFramwork 3.1 or Higher
+- SDK .NetCore 3.1 or Higher
+- EntityFramwork 3.1 or Higher
 https://dotnet.microsoft.com/download
-Bot Framework
+- Bot Framework
 https://github.com/microsoft/botframework
-Bot Framework Emulator v4
+- Bot Framework Emulator v4
 https://github.com/microsoft/BotFramework-Emulator
 
 The project contains 3 Main projects
