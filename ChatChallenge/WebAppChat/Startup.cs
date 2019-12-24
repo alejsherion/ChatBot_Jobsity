@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebAppChat.Hubs;
+using WebAppChat.Services;
+using System.Net.Http;
 
 namespace WebAppChat
 {
@@ -35,6 +37,9 @@ namespace WebAppChat
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
             services.AddSignalR();
+
+            services.AddTransient<IBotService, BotService>();
+            services.AddTransient<HttpClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
